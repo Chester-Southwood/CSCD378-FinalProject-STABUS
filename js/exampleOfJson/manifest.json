@@ -1,0 +1,10 @@
+[
+    Regulations: {
+        "default_css": "default_url",
+        "custom_css": "custom-url",
+        "alternate-congigurations"[
+            "#Background":"red",
+            ".ballIconBackground":"Green"
+        ]
+    }
+]
