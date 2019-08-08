@@ -1,0 +1,73 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: grey;
+    display: grid;
+    grid-template-columns: [MAIN] auto [RIBBON] 24% [END];
+    grid-template-rows: [TIMEBAR] 65px [CONTENT] auto [END];
+}
+
+#timebar {
+    grid-column: MAIN / END;
+    grid-row: TIMEBAR / CONTENT;
+    background: black;
+    color: white;
+}
+
+.canvas {
+    grid-row: CONTENT / END;
+    grid-column: RIBBON / END;
+    background: grey;
+}
+
+.route {
+    justify-self: center;
+    display: flex;
+    width: auto;
+    height: auto
+}
+
+.circle {
+    display: flex;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.route_number {
+    align-self: center;
+    margin: 0;
+    line-height: 1;
+}
+
+#route_main_bg {
+    width: 280px;
+    height: 280px;
+}
+
+#route_side_bg {
+    width: 190px;
+    height: 190px;
+}
+
+#main_circle {
+    width: inherit;
+    height: inherit;
+    font-size: 90px;
+    color: #fff;
+}
+
+#side_circle {
+    width: inherit;
+    height: inherit;
+    font-size: 60px;
+    color: #fff;
+}
+

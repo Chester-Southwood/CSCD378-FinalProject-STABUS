@@ -1,0 +1,23 @@
+.bg {
+    /* container-placement */
+    grid-column: MAIN / RIBBON;
+    grid-row: CONTENT / END;
+
+    /* content-layout */
+    display: grid;
+    height: auto;
+    width: auto;
+
+    /* content-properties */
+    background: #00b7f1;
+    color: #b0d570;
+}
+
+#main_circle {
+    background: #b0d570;
+}
+
+#side_circle {
+    background: lightgrey;
+    color: black;
+}
