@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap');
+
 html {
     height: 100%;
     width: 100%;
@@ -7,67 +9,96 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
-    background: grey;
     display: grid;
     grid-template-columns: [MAIN] auto [RIBBON] 24% [END];
     grid-template-rows: [TIMEBAR] 65px [CONTENT] auto [END];
 }
 
+.canvas {
+    grid-row: CONTENT / END;
+}
+
+
+/* ROUTE CIRCLE */
+.route {
+    justify-self: center;
+    display: flex;
+    width: auto;
+    height: auto;
+}
+
+.circle {
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+}
+
+.route_number {
+    margin: 0;
+    width: inherit;
+    align-self: baseline;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    /* transform: translateY(-15%); */
+}
+
+.side_bg {
+    /* container-placement */
+    grid-column: RIBBON / END;
+    grid-row: CONTENT / END;
+
+    /* content-layout */
+    display: grid;
+    height: auto;
+    width: auto;
+
+    /* content-properties */
+    background: grey;
+}
+
+#route_main {
+    width: 340px;
+    height: 340px;
+    align-self: center;
+}
+
+#route_side {
+    width: 210px;
+    height: 210px;
+    align-self: center;
+}
+
+#route_main_number {
+    font-size: 15vw;
+    color: white;
+}
+
+#route_side_number {
+    font-size: 9vw;
+    color: #353535;
+}
+
+#side_circle {
+    background: lightgrey;
+}
+
+
+
+
+
+/* TIME BAR */
 #timebar {
+    display: inline-flex;
     grid-column: MAIN / END;
     grid-row: TIMEBAR / CONTENT;
     background: black;
     color: white;
 }
 
-.canvas {
-    grid-row: CONTENT / END;
-    grid-column: RIBBON / END;
-    background: grey;
-}
-
-.route {
-    justify-self: center;
-    display: flex;
-    width: auto;
-    height: auto
-}
-
-.circle {
-    display: flex;
-    border-radius: 50%;
+#currentTime {
+    margin: 2px 0 0 5px;
+    align-self: baseline;
     text-align: center;
-    justify-content: center;
-    align-content: center;
+    font-size: 38px;
 }
-
-.route_number {
-    align-self: center;
-    margin: 0;
-    line-height: 1;
-}
-
-#route_main_bg {
-    width: 280px;
-    height: 280px;
-}
-
-#route_side_bg {
-    width: 190px;
-    height: 190px;
-}
-
-#main_circle {
-    width: inherit;
-    height: inherit;
-    font-size: 90px;
-    color: #fff;
-}
-
-#side_circle {
-    width: inherit;
-    height: inherit;
-    font-size: 60px;
-    color: #fff;
-}
-

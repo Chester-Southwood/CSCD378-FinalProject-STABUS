@@ -7,29 +7,28 @@
         <title>Transit Lounge App</title>
         <link rel="stylesheet" href="./styles/static.css" title="theme">
         <link rel="alternate stylesheet" href="./styles/STA_Theme.css" title="theme">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
         <!-- TIME BAR -->
         <div id="timebar">
-            TIME BAR
-            
+            <div id="currentTime">11:55am</div>
         </div>
 
         <!-- MAIN BUS CONTENT -->
-        <div class="bg canvas">
-            MAIN CONTENT
-            <div class="route" id="route_main_bg">
-                <div class="circle" id="main_circle"><h1 class="route_number" id="route_main_number">3468</h1></div>
+        <div class="main_bg canvas">
+            <div class="route" id="route_main">
+                <div class="circle" id="main_circle">
+                    <h1 class="route_number" id="route_main_number">66</h1>
+                </div>
             </div>
         </div>
 
         <!-- SIDE RIBBON CONTENT -->
         <div class="side_bg canvas">
-            SIDE CONTENT
-            <div class="route" id="route_side_bg">
+            <div class="route" id="route_side">
                 <div class="circle" id="side_circle"><h1 class="route_number" id="route_side_number">68</h1></div>
             </div>
         </div>
-
     </body>
 </html>
