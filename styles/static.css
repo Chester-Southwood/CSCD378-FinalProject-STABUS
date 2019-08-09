@@ -94,6 +94,9 @@ body {
     grid-row: TIMEBAR / CONTENT;
     background: black;
     color: white;
+    padding: 2px 0 0 20px;
+    text-align: center;
+    font-size: 38px;
 }
 
 #currentTime {

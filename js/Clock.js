@@ -15,7 +15,7 @@ function Clock()
 
     Clock.prototype.update = function () {
         this.updateTime(1);
-        document.getElementById("timebar").innerHTML = this.getTimeString();
+        document.getElementById("timebar").innerHTML = this.getTimeString() + this.getTimePeriod();
     };
 
     Clock.prototype.updateTime = function (secs) {
@@ -34,7 +34,7 @@ function Clock()
     };
 
     Clock.prototype.getTimePeriod = function () {
-        return this.hours > 12 ? "P.M." : "A.M.";
+        return this.hours > 12 ? "pm" : "am";
     }
 
     Clock.prototype.getTimeString = function () {
