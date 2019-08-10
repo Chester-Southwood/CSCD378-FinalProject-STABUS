@@ -6,6 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Transit Lounge App</title>
         <link rel="stylesheet" href="./styles/static.css" title="theme">
+        <link rel="stylesheet" href="./styles/countdown.css" title="theme">
+        <link rel="stylesheet" href="./styles/route.css" title="theme">
+        <link rel="stylesheet" href="./styles/timebar.css" title="theme">
         <link rel="alternate stylesheet" href="./styles/STA_Theme.css" title="theme">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="./js/utils.js"></script>
@@ -16,24 +19,37 @@
         <div id="timebar">
             <div id="currentTime">11:34am</div>
             <div class="rightSideDate">
-                <div class="rightSideDate" id="day">Tuesday</div>
-                <div class="rightSideDate" id="date">August 13th, 2019</div>
+                <div class="rightSideDate" id="currentDay">Tuesday</div>
+                <div class="rightSideDate" id="currentDate">August 13th, 2019</div>
             </div>
         </div>
 
         <!-- MAIN BUS CONTENT -->
         <div class="main_bg canvas">
+			<div class="countdown" id="arrivesIN">
+				<h3>arrives in</h3>
+				<h1 id="arrivesIN_minute">4</h1>
+				<h3>minutes</h3>
+			</div>
             <div class="route" id="route_main">
+				<div class="circle" id="main_backdrop_circle"><h1>1</h1></div>
                 <div class="circle" id="main_circle">
                     <h1 class="route_number" id="route_main_number">66</h1>
                 </div>
             </div>
         </div>
 
-        <!-- SIDE RIBBON CONTENT -->
+        <!-- SIDE BUS CONTENT -->
         <div class="side_bg canvas">
+			<div class="countdown" id="alsoIN" value="">
+				<h3>also in</h3>
+				<h1 id="alsoIN_minute">38</h1>
+				<h3>minutes</h3>
+			</div>
             <div class="route" id="route_side">
-                <div class="circle" id="side_circle"><h1 class="route_number" id="route_side_number">68</h1></div>
+                <div class="circle" id="side_circle">
+					<h1 class="route_number" id="route_side_number">68</h1>
+				</div>
             </div>
         </div>
     </body>

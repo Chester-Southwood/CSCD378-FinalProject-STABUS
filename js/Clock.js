@@ -15,7 +15,9 @@ function Clock()
 
     Clock.prototype.update = function () {
         this.updateTime(1);
-        document.getElementById("timebar").innerHTML = this.getTimeString() + this.getTimePeriod();
+          document.getElementById("currentTime").innerHTML = "<p id='time'>" + this.getTimeString() + "</p>" + "<p id='period'>" + this.getTimePeriod() + "</p>";
+          document.getElementById("currentDay").innerHTML = "<p id='day'>" + this.dayString + "</p>";
+          document.getElementById("currentDate").innerHTML = "<p id='date'>" + this.monthString + " " + "<b style='color: red; font-size: 25px;'>" + this.dayNumber + "</b>" + "<p style='font-size: 14px; margin: 0 0 7px 0;'>" + Clock.prototype.getOrdinalIndicator() + "</p>" + "<p style='font-size: 24px;'>" + ", " + this.year + "</p>" + "</p>";
     };
 
     Clock.prototype.updateTime = function (secs) {
@@ -34,7 +36,7 @@ function Clock()
     };
 
     Clock.prototype.getTimePeriod = function () {
-        return this.hours > 12 ? "pm" : "am";
+          return this.hours > 12 ? "pm" : "am";
     }
 
     Clock.prototype.getTimeString = function () {

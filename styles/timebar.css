@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&display=swap');
+@import url('../resources/fonts/segoeuib.ttf');
+
+/* TIME BAR */
+#timebar {
+    display: inline-flex;
+    grid-column: MAIN / END;
+    grid-row: TIMEBAR / CONTENT;
+    background: black;
+    color: white;
+	text-align: center;
+	justify-content: space-between;
+}
+
+#currentTime {
+	font-family: 'Ubuntu Mono', monospace;
+	font-weight: 500;
+	padding: 2px 0 0 20px;
+	align-self: center;
+	text-align: center;
+	margin: 0 0 9px 0;
+	font-size: 48px;
+	display: inline-flex;
+	flex-direction: row;
+}
+#time {
+	color: white;
+	margin: 0;
+}
+#period {
+	font-size: 24px;
+	align-self: flex-end;
+	color: red;
+	margin: 0 0 7px 8px;
+}
+
+.rightSideDate {
+	align-content: flex-end;
+	display: inline-flex;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	align-items: center;
+	margin: 0 20px 2px 0;
+}
+#day {
+	text-transform: uppercase;
+	font-size: 28px;
+	letter-spacing: 2px;
+	font-weight: 700;
+	margin: 0 30px 0 0;
+}
+#date {
+      text-transform: uppercase;
+      font-size: 24px;
+}

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+
+/* ROUTE CIRCLE */
+.route {
+	justify-self: center;
+	align-content: center;
+    display: flex;
+    width: auto;
+    height: auto;
+}
+
+.circle {
+    grid-row: inherit;
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+}
+
+.route_number {
+    margin: 0;
+    width: inherit;
+    align-self: baseline;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    /* transform: translateY(-15%); */
+}
+
+.main_bg {
+	/* container-placement */
+	grid-column: MAIN / RIBBON;
+	grid-row: CONTENT / END;
+
+	/* content-layout */
+	display: grid;
+	height: auto;
+	width: auto;
+	grid-template-columns: [STARTmain] 30% [CIRCLEmain] auto [DEPART-ARRIVE] 30% [ENDmain];
+	grid-template-rows: [TOPmain] 10% [ROUTEmain] auto [LOGO] 10% [BOTTOMmain];
+
+	/* shadow */
+	box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+	z-index: 5;
+}
+
+.side_bg {
+    /* container-placement */
+    grid-column: RIBBON / END;
+    grid-row: CONTENT / END;
+
+    /* content-layout */
+    display: grid;
+    height: auto;
+	width: auto;
+	grid-template-columns: [STARTribbon] 100% [ENDribbon];
+	grid-template-rows: [TOPribbon] 37% [ROUTEribbon] auto [NAMEribbon] 37% [BOTTOMribbon];
+
+    /* content-properties */
+    background: grey;
+}
+
+#main_circle {
+	grid-column: CIRCLEmain / DEPART-ARRIVE;
+}
+
+#main_backdrop_circle {
+	grid-column: CIRCLEmain / DEPART-ARRIVE;
+}
+
+#route_main {
+    width: 340px;
+    height: 340px;
+	align-self: center;
+	grid-column: CIRCLEmain / DEPART-ARRIVE;
+	grid-row: ROUTEmain / LOGO;
+}
+
+#route_side {
+    width: 210px;
+    height: 210px;
+    align-self: center;
+}
+
+#route_main_number {
+    font-size: 15em;
+    color: white;
+}
+
+#route_side_number {
+    font-size: 9em;
+    color: #353535;
+}
+
+#side_circle {
+	grid-column: STARTribbon / ENDribbon;
+	grid-row: ROUTEribbon / NAMEribbon;
+    background: #929292;
+}
