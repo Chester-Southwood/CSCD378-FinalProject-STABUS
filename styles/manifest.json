@@ -3,8 +3,8 @@
         "stopId": [
             "STA_66"
         ],
-        "alternate_css": "false",
-        "badging_css": "true",
+        "alternate_css": "true",
+        "badging_css": "false",
         "manual_custom_css": {
             ".main_bg": {
                 "grid_column": "MAIN / RIBBON",
@@ -12,7 +12,7 @@
                 "display": "auto",
                 "height": "auto",
                 "width": "auto",
-                "background": "#00b7f1"
+                "background": "red"
             },
             "#main_circle": {
                 "background":"#b0dg70"
