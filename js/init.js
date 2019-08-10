@@ -16,11 +16,6 @@ function loadJSON(callback) {
  function init() {
        loadJSON(function(response) {
        let actual_JSON = JSON.parse(response);
-       
-       //check if they attached alternate_css.css
-       if(actual_JSON.settings.alternate_css == "false"){
-            $( "[rel='alternate stylesheet']")[0].disabled=true;
-       }
 
        //check if they want to edit through the manifest.json for badging
        if(actual_JSON.settings.badging_css == "true") {
@@ -31,6 +26,10 @@ function loadJSON(callback) {
                     $(x).css(y, actual_JSON.settings.manual_custom_css[x][y]);
                 }
             }
+            console.log("Not Here");
+        }
+        else{
+            console.log("Got here");
         }
     });
 }
