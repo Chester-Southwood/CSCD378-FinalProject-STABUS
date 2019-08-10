@@ -95,7 +95,7 @@ function proofOfConcept () {
 }
 
 function main(){
-    proofOfConcept();
+    //proofOfConcept();
 }
 
 $.ready(main());
