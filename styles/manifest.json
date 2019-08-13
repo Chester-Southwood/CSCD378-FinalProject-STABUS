@@ -1,9 +1,8 @@
 {
     "settings": {
         "stopId": [
-            "STA_66"
+            "STA_57TPEREN"
         ],
-        "alternate_css": "true",
         "badging_css": "true",
         "manual_custom_css": {
             ".main_bg": {

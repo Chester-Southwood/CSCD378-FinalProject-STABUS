@@ -162,6 +162,40 @@ function getStopsForRoute(route){
           }); 
     }
 
+    //trip ID -> "STA_627014"
+    function getStopInfo(stop){
+        $.ajax({
+            type: 'GET',
+            url: "http://52.88.188.196:8080/api/api/where/stop/"+stop+".json?key=TEST",
+            contentType: 'application/json',
+            crossDomain: true,
+            dataType: 'jsonp',
+            headers: {
+                'X-Alt-Referer': 'sit.mydomain.com',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Origin,X-Requested-With, Content-Type,Accept, Authorization, X-Custom-Header',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            success: function(data) { 
+                        let routeNum = data.data.entry.routeIds[0].split("STA_")[1];
+                        console.log(routeNum);
+                        document.getElementsByClassName("route_number")[0].innerHTML = routeNum;
+                        let newDate = new Date(1565615640000);
+                        console.log(newDate.getHours() + newDate.getMinutes());
+                        let mininutesTill = newDate.getMinutes();
+                        let dateMe = new Date();
+                        document.getElementById("arrivesIN_minute").innerHTML = mininutesTill - dateMe.getMinutes();
+                        //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+            },
+            error: function(xhr, status, err) { 
+            console.log(err);}
+          }); 
+    }
+
+    function helloTest(){
+        console.log("lkfajfljalkfj falkjkljfajljfl kljfaklkljf");
+    }
 
 
     //"STA_627014"
@@ -189,11 +223,18 @@ function getStopsForRoute(route){
           }); 
     }
 
-    function main(){
+    function util_main(){
         // getStopsForRoute("STA_66");
         //getScheduleForStop("STA_3RDCEDWN");
         //console.log(getStopsForRoute("STA_66"));
-        //getScheduleForStop(getStopsForRoute("STA_66").stopIds);
-        getScheduleForStop("STA_3292");
+        //getScheduleForStop(getStopsForRoute("STA_66"));
+        console.log("HERE");
+        //getScheduleForStop("STA_3292");
+        console.log("HERE");
+        loadJSON(function (response){
+            let actual_JSON = JSON.parse(response);
+            console.log(actual_JSON.settings.stopId.toString());
+            getStopInfo(actual_JSON.settings.stopId.toString());
+        });
     }
-main();
+util_main();
