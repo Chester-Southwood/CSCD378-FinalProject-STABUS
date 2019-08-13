@@ -1,7 +1,3 @@
-
-
-
-
 //http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.15/api/where/methods/routes-for-agency.html
 function getAgencyInfo(agency){
     $.ajax({
@@ -153,7 +149,7 @@ function getStopsForRoute(route){
                 'Access-Control-Allow-Credentials': 'true'
             },
             success: function(data) { 
-                        console.log(data);
+                        console.log(data.data);
     
                         //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
             },
@@ -177,16 +173,18 @@ function getStopsForRoute(route){
                 'Access-Control-Allow-Headers': 'Origin,X-Requested-With, Content-Type,Accept, Authorization, X-Custom-Header',
                 'Access-Control-Allow-Credentials': 'true'
             },
-            success: function(data) { 
-                        let routeNum = data.data.entry.routeIds[0].split("STA_")[1];
-                        console.log(routeNum);
-                        document.getElementsByClassName("route_number")[0].innerHTML = routeNum;
-                        let newDate = new Date(1565615640000);
-                        console.log(newDate.getHours() + newDate.getMinutes());
-                        let mininutesTill = newDate.getMinutes();
-                        let dateMe = new Date();
-                        document.getElementById("arrivesIN_minute").innerHTML = mininutesTill - dateMe.getMinutes();
-                        //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+            success: function(data) {
+                console.log(data.data);
+                document.getElementById("stop").innerHTML = data.data.entry.name;
+                let routeNum = data.data.entry.routeIds[0].split("STA_")[1];
+                console.log(routeNum);
+                document.getElementsByClassName("route_number")[0].innerHTML = routeNum;
+                let newDate = new Date(1565615640000);
+                console.log(newDate.getHours() + newDate.getMinutes());
+                let mininutesTill = newDate.getMinutes();
+                let dateMe = new Date();
+                document.getElementById("arrivesIN_minute").value = mininutesTill - dateMe.getMinutes();
+                //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
             },
             error: function(xhr, status, err) { 
             console.log(err);}
@@ -214,9 +212,9 @@ function getStopsForRoute(route){
                 'Access-Control-Allow-Credentials': 'true'
             },
             success: function(data) { 
-                        console.log(data.data);
-    
-                        //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+                console.log(data.data);
+
+                //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
             },
             error: function(xhr, status, err) { 
             console.log(err);}
@@ -228,13 +226,13 @@ function getStopsForRoute(route){
         //getScheduleForStop("STA_3RDCEDWN");
         //console.log(getStopsForRoute("STA_66"));
         //getScheduleForStop(getStopsForRoute("STA_66"));
-        console.log("HERE");
         //getScheduleForStop("STA_3292");
-        console.log("HERE");
-        loadJSON(function (response){
+        loadJSON(function (response) {
             let actual_JSON = JSON.parse(response);
-            console.log(actual_JSON.settings.stopId.toString());
+            console.log("in MAIN");
+            console.log(actual_JSON.settings);
             getStopInfo(actual_JSON.settings.stopId.toString());
+            // getScheduleForStop(actual_JSON.settings.)
         });
     }
 util_main();

@@ -19,7 +19,6 @@ function Clock()
           document.getElementById("currentTime").innerHTML = "<p id='time'>" + this.getTimeString() + "</p>" + "<p id='period'>" + this.getTimePeriod() + "</p>";
           document.getElementById("currentDay").innerHTML = "<p id='day'>" + this.dayString + "</p>";
           document.getElementById("currentDate").innerHTML = "<p id='date'>" + this.monthString + " " + "<b style='color: red; font-size: 25px;'>" + this.dayNumber + "</b>" + "<p style='font-size: 14px; margin: 0 0 7px 0;'>" + Clock.prototype.getOrdinalIndicator() + "</p>" + "<p style='font-size: 24px;'>" + ", " + this.year + "</p>" + "</p>";
-          console.log("hi");
           if(this.seconds % 30 == 0) {
               console.log(this.seconds);
               util_main();
@@ -100,8 +99,12 @@ function proofOfConcept () {
     console.log(clock.getDateString());
 }
 
-function main(){
+function main() {
     proofOfConcept();
+}
+
+function updateTime() {
+    console.log("something");
 }
 
 $.ready(main());
