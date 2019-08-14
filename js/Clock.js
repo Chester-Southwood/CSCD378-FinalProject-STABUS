@@ -19,9 +19,7 @@ function Clock()
             document.getElementById("currentDay").innerHTML = "<p id='day'>" + this.dayString + "</p>";
             document.getElementById("currentDate").innerHTML = "<p id='date'>" + this.monthString + " " + "<b style='color: red; font-size: 25px;'>" + this.dayNumber + "</b>" + "<p style='font-size: 14px; margin: 0 0 7px 0;'>" + Clock.prototype.getOrdinalIndicator() + "</p>" + "<p style='font-size: 24px;'>" + ", " + this.year + "</p>" + "</p>";
             if (this.seconds % 30 == 0) {
-                console.log(this.seconds);
                 util_main();
-                updateArrivalTime();
             }
         };
 
@@ -88,23 +86,29 @@ function Clock()
 function proofOfConcept () {
     let clock = new Clock();
     clock.run();
-    console.log(clock.dayString);
-    console.log(`Time is -> ${clock.getTimeString()}`);
-    console.log(`Time Period is -> ${clock.getTimePeriod()}`);
-    console.log(`Day Word is -> ${clock.dayString}`);
-    console.log(`Month Word is -> ${clock.monthString}`);
-    console.log(`Day int is -> ${clock.dayNumber}`);
-    console.log(`Ordinal Indicator is -> ${clock.getOrdinalIndicator()}`);
-    console.log(`Year int is -> ${clock.year}`);
-    console.log(clock.getDateString());
+    // DELETE: for debugging purposes only
+    // console.log(clock.dayString);
+    // console.log(`Time is -> ${clock.getTimeString()}`);
+    // console.log(`Time Period is -> ${clock.getTimePeriod()}`);
+    // console.log(`Day Word is -> ${clock.dayString}`);
+    // console.log(`Month Word is -> ${clock.monthString}`);
+    // console.log(`Day int is -> ${clock.dayNumber}`);
+    // console.log(`Ordinal Indicator is -> ${clock.getOrdinalIndicator()}`);
+    // console.log(`Year int is -> ${clock.year}`);
+    // console.log(clock.getDateString());
 }
+
+///////////////////////////
+// TODO: To handle late-night no bus, no update to API issue
+// If, this.currentTime >= last bus for stop,
+// call a full-screen overlay, 
+// "We're sorry, no more routes for the night, come back in the morning. :)"
+///////////////////////////
+
+
 
 function main() {
     proofOfConcept();
-}
-
-function updateArrivalTime() {
-    console.log("something");
 }
 
 $.ready(main());

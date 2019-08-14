@@ -18,7 +18,7 @@
 
 .route_number {
     margin: 0;
-    width: inherit;
+    width: auto;
     align-self: baseline;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
@@ -26,45 +26,29 @@
     /* transform: translateY(-15%); */
 }
 
-.main_bg {
-	/* container-placement */
-	grid-column: MAIN / RIBBON;
-	grid-row: CONTENT / END;
-
-	/* content-layout */
-	display: grid;
-	height: auto;
-	width: auto;
-	grid-template-columns: [STARTmain] 30% [CIRCLEmain] auto [DEPART-ARRIVE] 30% [ENDmain];
-	grid-template-rows: [TOPmain] 10% [ROUTEmain] auto [LOGO] 10% [BOTTOMmain];
-
-	/* shadow */
-	box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
-	z-index: 5;
-}
-
-.side_bg {
-    /* container-placement */
-    grid-column: RIBBON / END;
-    grid-row: CONTENT / END;
-
-    /* content-layout */
-    display: grid;
-    height: auto;
-	width: auto;
-	grid-template-columns: [STARTribbon] 100% [ENDribbon];
-	grid-template-rows: [TOPribbon] 37% [ROUTEribbon] auto [NAMEribbon] 37% [BOTTOMribbon];
-
-    /* content-properties */
-    background: grey;
-}
-
 #main_circle {
 	grid-column: CIRCLEmain / DEPART-ARRIVE;
 }
 
-#main_backdrop_circle {
-	grid-column: CIRCLEmain / DEPART-ARRIVE;
+#main_backdrop {
+    grid-column: STARTmain / DEPART-ARRIVE;
+    grid-row: ROUTEmain / LOGO;
+    border-radius: 0px 340px 340px 0px;
+    background: white;
+    box-shadow: 0px 0px 0px 1px solid red;
+    margin: -10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+#side_backdrop {
+    grid-column: CIRCLEmidSTART / CIRCLEmidEND;
+    grid-row: TOPribbon / ROUTEribbonEND;
+    border-radius: 0px 0px 210px 210px;
+    background: rgb(143, 143, 143);
+    margin: -10px;
+    box-shadow: 0px 0px 0px 1px solid red;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 3;
 }
 
 #route_main {
@@ -79,20 +63,31 @@
     width: 210px;
     height: 210px;
     align-self: center;
+    grid-column: CIRCLEmidSTART / CIRCLEmidEND;
+    grid-row: ROUTEribbon / ROUTEribbonEND;
+    z-index: 4;
 }
 
 #route_main_number {
     font-size: 15em;
     color: white;
+    text-align: center;
+    height: 100%;
 }
 
 #route_side_number {
     font-size: 9em;
-    color: #353535;
+    color: #5c5c5c;
+    z-index: 4;
 }
 
 #side_circle {
-	grid-column: STARTribbon / ENDribbon;
-	grid-row: ROUTEribbon / NAMEribbon;
-    background: #929292;
+    grid-column: CIRCLEmidSTART / CIRCLEmidEND;
+	grid-row: ROUTEribbon / ROUTEribbonEND;
+    background: #868686;
+    z-index: 5;
+}
+
+.arrivesIN_text {
+    color: rgb(95, 95, 95);
 }

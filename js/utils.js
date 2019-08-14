@@ -1,5 +1,3 @@
-import("Clock.js");
-
 //http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.15/api/where/methods/routes-for-agency.html
 function getAgencyInfo(agency){
     $.ajax({
@@ -16,12 +14,10 @@ function getAgencyInfo(agency){
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) { 
-                console.log(data.data.entry);
-
-                    //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+            //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
       }); 
 }
 
@@ -42,12 +38,11 @@ function stopIdsForAgency(agency) {
         success: function(data) {
             // console.log(data.data);
             data.data.list.forEach(element => {
-                // console.log(element);
             })
             //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
       });
 }
 
@@ -68,14 +63,12 @@ function routesForAgency(agency) {
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) { 
-                data.data.list.forEach(element => {
-                    console.log(element);
-                })
-
-                    //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+            data.data.list.forEach(element => {
+            })
+            //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
     }); 
 }
 
@@ -96,13 +89,13 @@ function getCurrentVehicleObjs(agency){
         },
         success: function(data) { 
                 data.data.list.forEach(element => {
-                            console.log(element);
+                    console.log(element);
                 })
 
                     //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
       }); 
     }
 
@@ -154,8 +147,6 @@ function getArrivalsAndDeparturesObjForStop(stop) {
 
             // filter out expired routes
             busRoutes.forEach(function(route) {
-                console.log(route);
-                console.log(data.currentTime);
                 // if: arrival time for next bus hasn't happened yet...basically, if the bus's arrival time is in the future from the current time.
                 if (route.scheduledArrivalTime > data.currentTime) {
                     filteredRoutes.push(route);
@@ -163,10 +154,11 @@ function getArrivalsAndDeparturesObjForStop(stop) {
             });
 
             // set route numbers
-            if (filteredRoutes != null) {
+            if (filteredRoutes[0] != null) {
                 // set next bus
                 document.getElementById("route_main_number").innerHTML = filteredRoutes[0].routeShortName;
                 document.getElementById("arrivesIN_minute").innerHTML = Math.floor((filteredRoutes[0].scheduledArrivalTime - data.currentTime) / 60000);
+                colorizeArrivalMinutes();
                 
                 // IF: more than one route exists, set bus after that
                 if (filteredRoutes.length > 1) {
@@ -178,21 +170,20 @@ function getArrivalsAndDeparturesObjForStop(stop) {
                 }
                 // ELSE: blank out side bar
                 else {
-                    $("#alsoIN_top_text").text("");
+                    $(".alsoIN_text").text("");
                     $("#alsoIN_minute").text("");
-                    $("#alsoIN_bottom_text").text("");
                     document.getElementById("route_side_number").innerHTML = "";
                     // TODO: expand $(".main-bg") to full-screen
+                    // TODO: is it possible to pull 
                 }
             }
-            
-            
-
-
+            else {
+                console.log("no results");
+            }
             //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
     }); 
 }
 
@@ -212,12 +203,10 @@ function getScheduleForStop(stop) {
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) { 
-                    console.log(data.data);
-
                     //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
     }); 
 }
 
@@ -237,16 +226,12 @@ function getStopInfo(stop) {
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) {
-            console.log(data.data);
+            console.log(data);
             document.getElementById("stop").innerHTML = data.data.entry.name;
-            let newDate = new Date(1565615640000);
-            let mininutesTill = newDate.getMinutes();
-            let dateMe = new Date();
-            // document.getElementById("arrivesIN_minute").value = mininutesTill - dateMe.getMinutes();
             //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
     }); 
 }
 
@@ -266,30 +251,37 @@ function getTripInfoFromId(tripId) {
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) { 
-            console.log(data.data);
             //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
         error: function(xhr, status, err) { 
-        console.log(err);}
+            console.log(err);}
     }); 
 }
 
-function util_main() {
-    //getStopsForRoute("STA_66");
-    //getScheduleForStop("STA_3RDCEDWN");
-    //console.log(getStopsForRoute("STA_66"));
-    //getScheduleForStop(getStopsForRoute("STA_66"));
-    //getScheduleForStop("STA_3292");
-    // console.log("stopIdsForAgency" + stopIdsForAgency("STA"));
-    // console.log("getScheduleForStop" + getScheduleForStop("STA_ELMCSTEN"));
-    
+function colorizeArrivalMinutes() {
+    console.log($("#arrivesIN_minute").text());
+    if (parseInt($("#arrivesIN_minute").text()) >= 10) {
+        $("#arrivesIN_minute").css("color", "green");
+    }
+    else if (parseInt($("#arrivesIN_minute").text()) >= 5) {
+        $("#arrivesIN_minute").css("color", "orange");
+    }
+    else if (parseInt($("#arrivesIN_minute").text()) < 5) {
+        $("#arrivesIN_minute").css("color", "red");
+    }
+}
+
+function placeLogo(image) {
+    $("#logo").attr("src", image);
+}
+
+function util_main() {    
     loadJSON( function(response) {
         let manifest_JSON = JSON.parse(response);
-        // console.log("Manifest.JSON Response");
-        // console.log(manifest_JSON);
+        // colorizeArrivalMinutes(); // DELETE: for debugging purposes only, dlete afterwards
         getArrivalsAndDeparturesObjForStop(manifest_JSON.settings.stopId.toString());
         getStopInfo(manifest_JSON.settings.stopId.toString());
-        // getScheduleForStop(actual_JSON.settings.)
+        placeLogo(manifest_JSON.settings.logo.toString());
     });
 }
 

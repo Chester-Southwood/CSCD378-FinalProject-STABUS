@@ -5,11 +5,12 @@
 .countdown {
     align-self: center;
 	justify-self: center;
-      font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 	text-transform: uppercase;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	z-index: 5;
 }
 
 #arrivesIN {
@@ -29,9 +30,9 @@
 }
 
 #alsoIN {
-	grid-column: STARTribbon / CIRCLEribbon;
+	grid-column: CIRCLEmidSTART / CIRCLEmidEND;
 	grid-row: TOPribbon / ROUTEribbon;
-	color: white;
+	color: rgb(214, 214, 214);
 }
 #alsoIN h3 {
 	font-size: 15px;

@@ -14,6 +14,7 @@
             "#main_backdrop_circle": {
                 "background": "white"
             }
-        }
+        },
+        "logo": "../resources/sta_logo.png"
     }
 }

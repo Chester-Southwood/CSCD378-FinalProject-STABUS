@@ -18,17 +18,13 @@ function init() {
     let actual_JSON = JSON.parse(response);
         //check if they want to edit through the manifest.json for badging
         if(actual_JSON.settings.badging_css == "true") {
-            console.log(`element => property : value`);
             for(let x in actual_JSON.settings.manual_custom_css){
                 for(let y in actual_JSON.settings.manual_custom_css[x]){
-                    console.log(`${x} => ${y} : ${actual_JSON.settings.manual_custom_css[x][y]}`);
                     $(x).css(y, actual_JSON.settings.manual_custom_css[x][y]);
                 }
             }
-            console.log("Not Here");
         }
-        else{
-            console.log("Got here");
+        else {
         }
     });
 }
