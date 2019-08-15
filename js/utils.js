@@ -7,7 +7,6 @@ function getAgencyInfo(agency){
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -30,7 +29,6 @@ function stopIdsForAgency(agency) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -58,7 +56,6 @@ function routesForAgency(agency) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -84,7 +81,6 @@ function getCurrentVehicleObjs(agency){
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -114,7 +110,6 @@ function getStopsForRoute(route) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -140,7 +135,6 @@ function getArrivalsAndDeparturesObjForStop(stop) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -209,7 +203,6 @@ function getScheduleForStop(stop) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -233,7 +226,6 @@ function getStopInfo(stop) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
@@ -259,7 +251,6 @@ function getTripInfoFromId(tripId) {
         crossDomain: true,
         dataType: 'jsonp',
         headers: {
-            'X-Content-Type-Options': 'nosniff',
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
