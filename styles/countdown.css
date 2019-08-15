@@ -5,7 +5,7 @@
 .countdown {
     align-self: center;
 	justify-self: center;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 	text-align: center;
 	display: flex;
