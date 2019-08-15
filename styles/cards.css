@@ -7,7 +7,7 @@
     height: 100%;
     flex-direction: column;
     align-content: center;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -17,6 +17,7 @@
     width: 150px;
     flex-direction: column;
     border-radius: 25px;
+    margin: 12px 0;
     box-shadow: 0 0 20px rgba(43, 43, 43, 0.24)
 }
 
@@ -80,4 +81,8 @@
     height: 20%;
     padding: 0 12px 20px 12px;
     color: rgb(0, 0, 0);
+}
+
+#triangles {
+    height: auto;
 }
