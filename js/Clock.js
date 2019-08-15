@@ -1,5 +1,6 @@
 function Clock() 
 {
+    // FIELDS
     this.todayDate = new Date();
     this.year = this.todayDate.getFullYear();
     this.hours = this.todayDate.getHours();
@@ -9,10 +10,10 @@ function Clock()
     this.dayString = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][this.todayDate.getDay()];
     this.monthString = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][this.todayDate.getMonth()];
 
-    Clock.prototype.run = function () {
-        setInterval(this.update.bind(this), 1000);
-    };
-
+    /* INTERVAL TIMER */
+        // call this function every second, to update date and time
+        // every 30sec call utils.js main function util_main() to request API data
+    Clock.prototype.run = function () { setInterval(this.update.bind(this), 1000); };
     Clock.prototype.update = function () {
         this.updateTime(1);
             document.getElementById("currentTime").innerHTML = "<p id='time'>" + this.getTimeString() + "</p>" + "<p id='period'>" + this.getTimePeriod() + "</p>";
@@ -21,7 +22,7 @@ function Clock()
             if (this.seconds % 30 == 0) {
                 util_main();
             }
-        };
+    };
 
     Clock.prototype.updateTime = function (secs) {
         this.seconds += secs;
@@ -82,27 +83,13 @@ function Clock()
     }
 }
 
+
 function milliSec_to_ClockTime(milliseconds) {
     var time = new Date(milliseconds);
     var peroid = time.getHours() >= 12 ? "pm" : "am"
     var hours = time.getHours() % 12;
     var minutes = time.getMinutes();
     return "" + hours + ":" + minutes + peroid;
-}
-
-function proofOfConcept () {
-    let clock = new Clock();
-    clock.run();
-    // DELETE: for debugging purposes only
-    // console.log(clock.dayString);
-    // console.log(`Time is -> ${clock.getTimeString()}`);
-    // console.log(`Time Period is -> ${clock.getTimePeriod()}`);
-    // console.log(`Day Word is -> ${clock.dayString}`);
-    // console.log(`Month Word is -> ${clock.monthString}`);
-    // console.log(`Day int is -> ${clock.dayNumber}`);
-    // console.log(`Ordinal Indicator is -> ${clock.getOrdinalIndicator()}`);
-    // console.log(`Year int is -> ${clock.year}`);
-    // console.log(clock.getDateString());
 }
 
 ///////////////////////////
@@ -113,9 +100,9 @@ function proofOfConcept () {
 ///////////////////////////
 
 
-
 function main() {
-    proofOfConcept();
+    let clock = new Clock();
+    clock.run();
 }
 
 $.ready(main());

@@ -21,6 +21,7 @@ function getAgencyInfo(agency){
       }); 
 }
 
+// Use this to display a list of all available Stop Id's for a specified agency.
 function stopIdsForAgency(agency) {
     $.ajax({
         type: 'GET',
@@ -44,86 +45,6 @@ function stopIdsForAgency(agency) {
         error: function(xhr, status, err) { 
             console.log(err);}
       });
-}
-
-
-//http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.15/api/where/methods/routes-for-agency.html
-function routesForAgency(agency) {
-    $.ajax({
-        type: 'GET',
-        url: "http://52.88.188.196:8080/api/api/where/routes-for-agency/"+agency+".json?key=TEST",
-        contentType: 'application/json',
-        crossDomain: true,
-        dataType: 'jsonp',
-        headers: {
-            'X-Alt-Referer': 'sit.mydomain.com',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Origin,X-Requested-With, Content-Type,Accept, Authorization, X-Custom-Header',
-            'Access-Control-Allow-Credentials': 'true'
-        },
-        success: function(data) { 
-            data.data.list.forEach(element => {
-            })
-            //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
-        },
-        error: function(xhr, status, err) { 
-            console.log(err);}
-    }); 
-}
-
-//http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.15/api/where/methods/vehiclesForAgency.html
-function getCurrentVehicleObjs(agency){
-    $.ajax({
-        type: 'GET',
-        url: "http://52.88.188.196:8080/api/api/where/vehicles-for-agency/"+agency+".json?key=TEST",
-        contentType: 'application/json',
-        crossDomain: true,
-        dataType: 'jsonp',
-        headers: {
-            'X-Alt-Referer': 'sit.mydomain.com',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Origin,X-Requested-With, Content-Type,Accept, Authorization, X-Custom-Header',
-            'Access-Control-Allow-Credentials': 'true'
-        },
-        success: function(data) { 
-                data.data.list.forEach(element => {
-                    console.log(element);
-                })
-
-                    //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
-        },
-        error: function(xhr, status, err) { 
-            console.log(err);}
-      }); 
-    }
-
-      //http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.15/api/where/methods/vehiclesForAgency.html
-
-      //Route 66 -> All Stop IDS
-function getStopsForRoute(route) {
-    $.ajax({
-        type: 'GET',
-        url: "http://52.88.188.196:8080/api/api/where/stops-for-route/"+route+".json?key=TEST",
-        contentType: 'application/json',
-        crossDomain: true,
-        dataType: 'jsonp',
-        headers: {
-            'X-Alt-Referer': 'sit.mydomain.com',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Origin,X-Requested-With, Content-Type,Accept, Authorization, X-Custom-Header',
-            'Access-Control-Allow-Credentials': 'true'
-        },
-        complete: function(data) {
-                    //return data.data;
-                    //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
-        },
-        error: function(xhr, status, err) { 
-            console.log(err);
-        }
-    }); 
 }
 
     //http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.15/api/where/methods/vehiclesForAgency.html
@@ -166,7 +87,7 @@ function getArrivalsAndDeparturesObjForStop(stop) {
                 // set next bus
                 $("#arrivesIN_top_text").text("arrives in");
                 $("#arrivesIN_bottom_text").text("minutes");
-                document.getElementById("departs_CardTime").innerHTML = Clock.milliSec_to_ClockTime(filteredRoutes[0].scheduledDepartureTime);
+                document.getElementById("departs_CardTime").innerHTML = milliSec_to_ClockTime(filteredRoutes[0].scheduledDepartureTime);
                 document.getElementById("main_routeName_text").innerHTML = filteredRoutes[0].tripHeadsign;
                 document.getElementById("route_main_number").innerHTML = filteredRoutes[0].routeShortName;
                 document.getElementById("arrivesIN_minute").innerHTML = Math.floor((filteredRoutes[0].scheduledArrivalTime - data.currentTime) / 60000);
@@ -176,6 +97,7 @@ function getArrivalsAndDeparturesObjForStop(stop) {
                 if (filteredRoutes.length > 1) {
                     $("#alsoIN_top_text").text("also in");
                     $("#alsoIN_bottom_text").text("minutes");
+                    document.getElementById("arrives_CardTime").innerHTML = milliSec_to_ClockTime(filteredRoutes[1].scheduledArrivalTime);
                     document.getElementById("side_routeName_text").innerHTML = filteredRoutes[1].tripHeadsign;
                     document.getElementById("route_side_number").innerHTML = filteredRoutes[1].routeShortName;
                     document.getElementById("alsoIN_minute").innerHTML = Math.floor((filteredRoutes[1].scheduledArrivalTime - data.currentTime) / 60000);
@@ -202,7 +124,6 @@ function getArrivalsAndDeparturesObjForStop(stop) {
     }); 
 }
 
-//trip ID -> "STA_627014"
 function getScheduleForStop(stop) {
     $.ajax({
         type: 'GET',
@@ -225,11 +146,10 @@ function getScheduleForStop(stop) {
     }); 
 }
 
-//trip ID -> "STA_627014"
-function getStopInfo(stop) {
+function getStopInfo(stopId) {
     $.ajax({
         type: 'GET',
-        url: "http://52.88.188.196:8080/api/api/where/stop/"+stop+".json?key=TEST",
+        url: "http://52.88.188.196:8080/api/api/where/stop/"+stopId+".json?key=TEST",
         contentType: 'application/json',
         crossDomain: true,
         dataType: 'jsonp',
@@ -250,11 +170,10 @@ function getStopInfo(stop) {
     }); 
 }
 
-//"STA_627014"
-function getTripInfoFromId(tripId) {
+function getTripDetails(tripId) {
     $.ajax({
         type: 'GET',
-        url: "http://52.88.188.196:8080/api/api/where/trip/"+tripId+".json?key=TEST",
+        url: "http://52.88.188.196:8080/api/api/where/trip-details/"+tripId+".json?key=TEST",
         contentType: 'application/json',
         crossDomain: true,
         dataType: 'jsonp',
@@ -266,7 +185,7 @@ function getTripInfoFromId(tripId) {
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) { 
-            //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+            
         },
         error: function(xhr, status, err) { 
             console.log(err);}
