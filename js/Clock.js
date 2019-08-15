@@ -39,7 +39,7 @@ function Clock()
     };
 
     Clock.prototype.getTimePeriod = function () {
-          return this.hours > 12 ? "pm" : "am";
+          return this.hours >= 12 ? "pm" : "am";
     }
 
     Clock.prototype.getTimeString = function () {
@@ -80,7 +80,14 @@ function Clock()
     Clock.prototype.getDateString = function () {
         return `${this.monthString} ${this.dayNumber}${this.getOrdinalIndicator()} ${this.year}`;
     }
+}
 
+function milliSec_to_ClockTime(milliseconds) {
+    var time = new Date(milliseconds);
+    var peroid = time.getHours() >= 12 ? "pm" : "am"
+    var hours = time.getHours() % 12;
+    var minutes = time.getMinutes();
+    return "" + hours + ":" + minutes + peroid;
 }
 
 function proofOfConcept () {

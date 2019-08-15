@@ -138,16 +138,24 @@ function getArrivalsAndDeparturesObjForStop(stop) {
             'X-Alt-Referer': 'sit.mydomain.com',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Origin,X-Requested-With, Content-Type,Accept, Authorization, X-Custom-Header',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Custom-Header',
             'Access-Control-Allow-Credentials': 'true'
         },
         success: function(data) { 
+            console.log(data);
             var filteredRoutes = [];
             var busRoutes = data.data.entry.arrivalsAndDepartures;
 
+            // check to see if stop has any more routes for the day listed
+            if (busRoutes == null) {
+                // display OFFLINE screen
+                // return;
+            }
+
             // filter out expired routes
             busRoutes.forEach(function(route) {
-                // if: arrival time for next bus hasn't happened yet...basically, if the bus's arrival time is in the future from the current time.
+                // if: arrival time for next bus hasn't happened yet...
+                // basically, if the bus's arrival time is in the future from the current time.
                 if (route.scheduledArrivalTime > data.currentTime) {
                     filteredRoutes.push(route);
                 }
@@ -156,9 +164,9 @@ function getArrivalsAndDeparturesObjForStop(stop) {
             // set route numbers
             if (filteredRoutes[0] != null) {
                 // set next bus
-                
                 $("#arrivesIN_top_text").text("arrives in");
                 $("#arrivesIN_bottom_text").text("minutes");
+                document.getElementById("departs_CardTime").innerHTML = Clock.milliSec_to_ClockTime(filteredRoutes[0].scheduledDepartureTime);
                 document.getElementById("main_routeName_text").innerHTML = filteredRoutes[0].tripHeadsign;
                 document.getElementById("route_main_number").innerHTML = filteredRoutes[0].routeShortName;
                 document.getElementById("arrivesIN_minute").innerHTML = Math.floor((filteredRoutes[0].scheduledArrivalTime - data.currentTime) / 60000);
@@ -189,7 +197,7 @@ function getArrivalsAndDeparturesObjForStop(stop) {
             }
             //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
         },
-        error: function(xhr, status, err) { 
+        error: function(xhr, status, err) {
             console.log(err);}
     }); 
 }
