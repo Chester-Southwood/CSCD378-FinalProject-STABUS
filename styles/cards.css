@@ -64,16 +64,20 @@
     padding: 2px;
 }
 
+.divFor_cardBusStop {
+    display: flex;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+    color: rgb(80, 80, 80);
+    padding: 12px;
+}
 .cardBusStop {
     margin: 0;
-    height: 80%;
 }
 .cardTime {
     margin: 0;
     height: 20%;
-    padding: 0 12px 12px 12px;
-}
-
-h3 {
-    align-self: center;
+    padding: 0 12px 20px 12px;
+    color: rgb(0, 0, 0);
 }
