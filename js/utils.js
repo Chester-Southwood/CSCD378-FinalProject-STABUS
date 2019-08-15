@@ -156,6 +156,10 @@ function getArrivalsAndDeparturesObjForStop(stop) {
             // set route numbers
             if (filteredRoutes[0] != null) {
                 // set next bus
+                
+                $("#arrivesIN_top_text").text("arrives in");
+                $("#arrivesIN_bottom_text").text("minutes");
+                document.getElementById("main_routeName_text").innerHTML = filteredRoutes[0].tripHeadsign;
                 document.getElementById("route_main_number").innerHTML = filteredRoutes[0].routeShortName;
                 document.getElementById("arrivesIN_minute").innerHTML = Math.floor((filteredRoutes[0].scheduledArrivalTime - data.currentTime) / 60000);
                 colorizeArrivalMinutes();
@@ -164,6 +168,7 @@ function getArrivalsAndDeparturesObjForStop(stop) {
                 if (filteredRoutes.length > 1) {
                     $("#alsoIN_top_text").text("also in");
                     $("#alsoIN_bottom_text").text("minutes");
+                    document.getElementById("side_routeName_text").innerHTML = filteredRoutes[1].tripHeadsign;
                     document.getElementById("route_side_number").innerHTML = filteredRoutes[1].routeShortName;
                     document.getElementById("alsoIN_minute").innerHTML = Math.floor((filteredRoutes[1].scheduledArrivalTime - data.currentTime) / 60000);
                     // TODO: slide out $(".side-bg") into $(".main-bg")
@@ -173,6 +178,8 @@ function getArrivalsAndDeparturesObjForStop(stop) {
                     $(".alsoIN_text").text("");
                     $("#alsoIN_minute").text("");
                     document.getElementById("route_side_number").innerHTML = "";
+                    document.getElementById("side_routeName_text").innerHTML = "";
+                    
                     // TODO: expand $(".main-bg") to full-screen
                     // TODO: is it possible to pull 
                 }

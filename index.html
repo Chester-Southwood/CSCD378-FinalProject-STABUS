@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./styles/countdown.css" title="theme">
         <link rel="stylesheet" href="./styles/route.css" title="theme">
         <link rel="stylesheet" href="./styles/timebar.css" title="theme">
+        <link rel="stylesheet" href="./styles/cards.css" title="theme">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="./js/init.js"></script>
         <script src="./js/utils.js"></script>
@@ -36,15 +37,37 @@
                 <h2 id="main_routeName_text">{route name}</h2>
             </div>
 			<div class="countdown" id="arrivesIN">
-				<h3 class="arrivesIN_text">{arrives in}</h3>
+				<h3 class="arrivesIN_text" id="arrivesIN_top_text">{arrives in}</h3>
 				<h1 id="arrivesIN_minute">{}</h1>
-				<h3 class="arrivesIN_text">{minutes}</h3>
+				<h3 class="arrivesIN_text" id="arrivesIN_bottom_text">{minutes}</h3>
 			</div>
             <div class="route" id="route_main">
                 <div class="circle" id="main_circle">
                     <h1 class="route_number" id="route_main_number">{}</h1>
                 </div>
             </div>
+
+            <div id="cardsContainer">
+                <div class="cards">
+                    <div class="card_header" id="departs_CardBG">
+                        <h2 class="card_title">Departs</h2>
+                    </div>
+                    <div class="card_body" id="departs_CardInfo">
+                        <h3 class="cardBusStop" id="departs_CardBusStop">{Elm & C Street}</h3>
+                        <h3 class="cardTime" id="departs_CardTime">{12:05pm}</h3>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="card_header" id="arrives_CardBG">
+                        <h2 class="card_title">Arrives</h2>
+                    </div>
+                    <div class="card_body" id="arrives_CardInfo">
+                        <h3 class="cardBusStop" id="arrives_CardBusStop">{Lincoln & Sprague}</h3>
+                        <h3 class="cardTime" id="arrives_CardTime">{12:42pm}</h3>
+                    </div>
+                </div>
+            </div>
+
             <img id="logo" src="" alt="bus agency logo">
         </div>
 
@@ -67,5 +90,16 @@
             </div>
         </div>
 
+        </div>
+
     </body>
 </html>
+
+<!-- UPCOMING FEATURES
+    * add fullscreen 'offline' at night when no more routes departing for the night
+    * edit route number to scale to fit in size when 3 or 4 digits
+    * check if 'predicted' == true, if so, then use this scheduled time instead (acc. delays)
+    * maybe divide sidebar in half showing next 2 incoming routes
+    * create table to flip between main screen, displaying bus stop's schedule for the next 10 incoming/outgoing routes for the day
+    * add section for scrolling alerts or comments underneith main route, could be useful for routes with special needs
+    * hightlight a button for bike access or not and wheelchar room availability or not -->
