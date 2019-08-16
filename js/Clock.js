@@ -88,7 +88,7 @@ function milliSec_to_ClockTime(milliseconds) {
     var time = new Date(milliseconds);
     var peroid = time.getHours() >= 12 ? "pm" : "am"
     var hours = time.getHours() % 12;
-    var minutes = time.getMinutes();
+    var minutes = time.getMinutes() < 10 ? ("0" + time.getMinutes()) : time.getMinutes();
     return "" + hours + ":" + minutes + peroid;
 }
 

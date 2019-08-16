@@ -112,7 +112,10 @@
     * maybe divide sidebar in half showing next 2 incoming routes
     * create table to flip between main screen, displaying bus stop's schedule for the next 10 incoming/outgoing routes for the day
     * add section for scrolling alerts or comments underneith main route, could be useful for routes with special needs
-    * hightlight a button for bike access or not and wheelchar room availability or not -->
+    * hightlight a button for bike access or not and wheelchar room availability or not
+    * in utils.js the function to notice user of changing routes, find a smart way to format this better 
+    * detect circle BG and main BG color based on hue and shade, change color of text to prevent blending of text from BG -->
 
 <!-- BUGS
-    * why is getArrivalsAndDeparturesObjForStop() in utils.js not return anything from the app at certain hours at night, but getStopInfo() works fine? -->
+    * why is getArrivalsAndDeparturesObjForStop() in utils.js not return anything from the app at certain hours at night, but getStopInfo() works fine?
+        ~ possible that my array of routes is blank at that level, try testing base json data call, test to see if departureArrivals array is blank -->

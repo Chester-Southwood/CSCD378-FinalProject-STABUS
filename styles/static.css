@@ -99,6 +99,7 @@ body {
 
 #side_routeName_text {
     color: rgb(104, 104, 104);
+    font-size: 20px;
     padding: 0 0px 0px 0;
     text-align: center;
     word-wrap: break-word;
